@@ -39,7 +39,7 @@ export default createStore({
             resolve(true)
           }
           resolve(false)
-        }).catch((error: any) => {
+        }).catch((error) => {
           reject(error)
         })
       })
@@ -58,7 +58,7 @@ export default createStore({
           })
           localStorage.removeItem('ACCESS_TOKEN')
           resolve(true)
-        }).catch((err: any) => {
+        }).catch((err) => {
           console.log('logout fail:', err)
         })
       })

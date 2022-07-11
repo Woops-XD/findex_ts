@@ -47,7 +47,7 @@ const handleLogout = async () => {
     //logout then  navi to login
     router.push({ name: 'login' })
   }).catch(err => {
-    message.error("logout fail")
+    message.error("logout fail",err)
   })
 }
 

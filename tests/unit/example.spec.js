@@ -1,4 +1,4 @@
-import { shallowMount,mount} from '@vue/test-utils'
+import { mount} from '@vue/test-utils'
 import Login from '@/views/Login.vue'
 // unit test 
 describe('Login.vue', () => {
@@ -24,19 +24,12 @@ describe('Login.vue', () => {
   it('test input   ', async () => {
     const wrapper = mount(Login)
     const nameInput = wrapper.find('#name')
-    
-     // @ts-ignore
     nameInput.element.value = "val"
     await nameInput.trigger('input')
-
     const passInput = wrapper.find('#password')
-
-      // @ts-ignore
     passInput.element.value = "val"
     await passInput.trigger('input')
-  // @ts-ignore
     expect(nameInput.element.value).toBe('val')
-     // @ts-ignore
     expect(passInput.element.value).toBe('val')
  
   })

@@ -1,5 +1,4 @@
 <template>
-  <h2>{{ sourcename }}</h2>
   <div style="height: 50vh">
     <canvas id="myChart"></canvas>
   </div>
@@ -11,41 +10,51 @@ import Chart from 'chart.js/auto';
 
 export default {
 
-  data() {
-    return {
-      sourcename: <string>'',
-    }
-  },
+  // data() {
+  //   return {
+  //     sourcename: <string>'',
+  //   }
+  // },
 
   mounted() {
     // fetch data from url 
-    fetch_chart().then((res: any) => {
-      // @ts-ignores
-      this.sourcename = res.data[0]['sourcename'];
+    fetch_chart().then((res) => {
+
       const canvas = <HTMLCanvasElement>document.getElementById('myChart');
       const ctx = canvas.getContext('2d');
       if (ctx != null) {
         // use chart.js draw the line chart
-        const myChart = new Chart(ctx, {
-          type: 'line',
-          data:
+        const myChart = new Chart(ctx,
           {
-            labels: res.data[1].map((x: { date: any; }) => x.date),
-            datasets: [{
-              label: 'Australia GDP growth (annual %)',
-              data: res.data[1].map((x: { value: any; }) => x.value),
-              fill: false,
-              borderColor: 'rgb(75, 192, 192)',
-              tension: 0.1
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-          }
-        });
+            type: 'line',
+            data:
+            {
+              labels: res.data[1].map((x: { date: number; }) => x.date),
+              datasets: [{
+                label: 'Australia GDP growth (annual %)',
+                data: res.data[1].map((x: { value: number; }) => x.value),
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                title: {
+                  display: true,
+                  font:{size:26},
+                  text: res.data[0].sourcename
+                }
+              }
+
+            }
+          });
         myChart;
       }
+    }).catch(err => {
+      console.log(err)
     });
   },
 }

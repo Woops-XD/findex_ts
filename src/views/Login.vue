@@ -5,7 +5,7 @@
 
             <a-form-item name="username" :rules="[{ required: true, message: 'Please input any  username!' }]">
                 <a-input id="name" size="large" type="text" placeholder="User name : admin"
-                    v-model:value="formState.username" @change="handleChnage">
+                    v-model:value="formState.username" >
                     <template #prefix>
                         <UserOutlined class="site-form-item-icon" />
                     </template>
@@ -36,7 +36,7 @@
 
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive  } from 'vue';
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
 import { useStore } from 'vuex';
@@ -60,9 +60,7 @@ export default defineComponent({
 
         });
 
-const handleChnage=(e: any)=>{
-console.log(e)
-}
+
         const handleSubmit = async () => {
 
             if (formState.username == "" || formState.password == "") {
@@ -77,7 +75,7 @@ console.log(e)
             return message.warning("Login error")
         }
         return {
-    handleChnage,
+ 
             formState,
             handleSubmit
         };
