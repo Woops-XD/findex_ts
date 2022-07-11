@@ -35,7 +35,7 @@ export default defineComponent({
 <style scoped>
 .calender {
   width: 95%;
-  height: 400px;
+  height: auto;
   background-color: white;
   margin-left: 2.5%;
   margin-top: 2.5vh;

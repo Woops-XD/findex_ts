@@ -57,7 +57,7 @@ findex_ts
 ## Chart library
 use chart.js
 Reason:
--wildly used 
--well document with step by step instruction 
--Responsive  with no extra code 
--Limited standard charts but meet the prototupe requirement 
+- wildly used 
+- well document with step by step instruction 
+- Responsive  with no extra code 
+- Limited standard charts but meet the prototupe requirement 

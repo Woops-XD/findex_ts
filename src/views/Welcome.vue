@@ -1,15 +1,12 @@
 <template>
-  <div class="container">
-    <a-result :title='`Hello ${store.state.name}, welcome to `' sub-title="Boyuan's intervew ">
-      <template #icon>
-        <smile-twoTone />
-      </template>
-      <template #extra>
-        <a-button type="primary" @click="handleClick">Greet</a-button>
-      </template>
-    </a-result>
-  </div>
-
+  <a-result class="result" :title='`Hello ${store.state.name}, welcome to `' sub-title="Boyuan's intervew ">
+    <template #icon>
+      <smile-twoTone />
+    </template>
+    <template #extra>
+      <a-button type="primary" @click="handleClick">Greet</a-button>
+    </template>
+  </a-result>
 </template>
 
 <script lang="ts">
@@ -35,11 +32,11 @@ const handleClick = () => {
 </script>
 
 <style scoped>
-.container {
-  width: 95%;
-  height: 600px;
+.result {
+  /* width: 95%; */
+  height: 400px;
   background-color: white;
   margin-left: 2.5%;
-  margin-top: 2.5vh;
+  margin-top: 2.5;
 }
 </style>
