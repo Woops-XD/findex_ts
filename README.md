@@ -1,7 +1,12 @@
 # findex_ts_interview 
 ## Overview 
 This is a dashboard prototype to display a chart for the open data. Due to I never use Vue befoe, the prototype is built with on Vue3 and ant design of vue UI library.So I can follow their code style.
- 
+ ![image](https://user-images.githubusercontent.com/75284239/178186918-832482d2-399d-48f1-8100-a1368a10f416.png)
+
+# Username and password: 
+## any string even space
+
+
 ### Env and dependencies
 
 - @vue/cli
@@ -45,8 +50,8 @@ findex_ts
 │  ├─ mock                     -- mock the login logout api 
 │  ├─ request                  -- Capsule AXIOS  
 │  ├─ router                   -- vue router 
-│  ├─ store                    -- vuex globale state store usre state
-│  ├─ type                     -- define types 
+│  ├─ store                    -- vuex globale state store usre state,login and token will be store locally for reopen
+│  ├─ type                     -- define types  
 │  └─ views                  
 ├─ tests                       -- unite test test-utils
 ├─ tsconfig.json
