@@ -6,20 +6,15 @@
 
 <script lang="ts" >
 import { fetch_chart } from '@/request/api';
+import { message } from 'ant-design-vue';
 import Chart from 'chart.js/auto';
 
 export default {
 
-  // data() {
-  //   return {
-  //     sourcename: <string>'',
-  //   }
-  // },
-
-  mounted() {
+async mounted() {
     // fetch data from url 
-    fetch_chart().then((res) => {
-
+    const response  = await fetch_chart();
+    if(response.status ==200){
       const canvas = <HTMLCanvasElement>document.getElementById('myChart');
       const ctx = canvas.getContext('2d');
       if (ctx != null) {
@@ -29,10 +24,10 @@ export default {
             type: 'line',
             data:
             {
-              labels: res.data[1].map((x: { date: number; }) => x.date),
+              labels: response.data[1].map((x: { date: number; }) => x.date),
               datasets: [{
                 label: 'Australia GDP growth (annual %)',
-                data: res.data[1].map((x: { value: number; }) => x.value),
+                data: response.data[1].map((x: { value: number; }) => x.value),
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
@@ -45,7 +40,7 @@ export default {
                 title: {
                   display: true,
                   font:{size:26},
-                  text: res.data[0].sourcename
+                  text: response.data[0].sourcename
                 }
               }
 
@@ -53,10 +48,14 @@ export default {
           });
         myChart;
       }
-    }).catch(err => {
-      console.log(err)
-    });
+
+    }else{
+      message.error("fetch data failed")
+    }
+
+   
   },
+ 
 }
 </script>
 
